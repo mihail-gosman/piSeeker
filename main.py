@@ -22,10 +22,8 @@ def seek(command):
         pi_estimation += src.leibniz.leibniz(n-step_size, n)
         delta_time = time.time() - delta_time
 
-        q = time.time()
         log_message(f"PI estimation: {pi_estimation}, total time: {time.time() - start_time}, step time: {delta_time}, termen: {n}")
-        q = time.time() - q
-        print(q)
+
 
 def main():
     while True:
