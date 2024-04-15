@@ -9,7 +9,7 @@ def log_message(message):
 
 
 def seek(command):
-    iterations = 10**12
+    iterations = 10**11
     step_size = 10**6
     pi_estimation = 0
 
