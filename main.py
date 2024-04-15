@@ -1,10 +1,16 @@
-import pyseeker.leibniz
-import pyseeker.leibniz_pi
+import src.leibniz
 
-iterations = 10**9
 
-#estimation1, time = pyseeker.leibniz.leibniz(iterations)
-estimation2, time2 = pyseeker.leibniz_pi.leibniz_pi(iterations)
+def main():
+    while True:
+        command = input("piSeeker> ")
 
-#print(f"Vanilla estimation pi={estimation1} in {time} seconds")
-print(f"Numpy method pi={estimation2} in {time2}")
+        if command == "exit":
+            exit()
+
+        else:
+            print("Error: command not found!")
+
+
+if __name__ == "__main__":
+    main()
