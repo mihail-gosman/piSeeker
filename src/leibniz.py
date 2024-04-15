@@ -4,6 +4,22 @@ import numpy as np
 import time
 
 
+def leibniz(start, end, iterations=-1):
+    partial_sum = 0
+
+    if iterations == -1:
+        for i in range(start, end):
+            partial_sum += ((-1) ** i) / (i * 2 + 1)
+
+    else:
+        for i in range(iterations):
+            partial_sum += ((-1) ** i) / (i * 2 + 1)
+
+    pi_estimate = partial_sum * 4
+
+    return pi_estimate
+
+
 def leibniz_pi(num_terms):
     start_time = time.time()
 
@@ -16,17 +32,4 @@ def leibniz_pi(num_terms):
     return pi_estimate, calculation_time
 
 
-def leibniz(iterations):
-    partial_sum = 0
-
-    delta = time.time()
-
-    for i in range(iterations):
-        partial_sum += ((-1)**i)/(i*2+1)
-
-    delta = time.time() - delta
-
-    partial_sum *= 4
-
-    return partial_sum, delta
 
