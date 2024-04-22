@@ -1,35 +1,31 @@
-import time
-
-import numpy as np
-import time
+import multiprocessing
 
 
-def leibniz(start, end, iterations=-1):
-    partial_sum = 0
+class LeibnizPi:
+    def __init__(self, num_terms):
+        self.num_terms = num_terms
+        self.partial_sum = multiprocessing.Value('d', 0)  # Using multiprocessing.Value for shared variable
 
-    if iterations == -1:
+    def calculate_partial_sum(self, start, end):
+        partial_sum = 0
         for i in range(start, end):
-            partial_sum += ((-1) ** i) / (i * 2 + 1)
+            partial_sum += ((-1) ** i) / (2 * i + 1)
 
-    else:
-        for i in range(iterations):
-            partial_sum += ((-1) ** i) / (i * 2 + 1)
+        with self.partial_sum.get_lock():
+            self.partial_sum.value += partial_sum
 
-    pi_estimate = partial_sum * 4
+    def calculate_pi(self, num_processes):
+        terms_per_process = self.num_terms // num_processes
+        processes = []
+        for i in range(num_processes):
+            start = i * terms_per_process
+            end = (i + 1) * terms_per_process if i < num_processes - 1 else self.num_terms
+            process = multiprocessing.Process(target=self.calculate_partial_sum, args=(start, end))
+            processes.append(process)
+            process.start()
 
-    return pi_estimate
+        for process in processes:
+            process.join()
 
-
-def leibniz_pi(num_terms):
-    start_time = time.time()
-
-    terms = np.arange(num_terms)
-    numerators = (-1) ** terms
-    denominators = 2 * terms + 1
-    pi_estimate = 4 * np.sum(numerators / denominators)
-    end_time = time.time()
-    calculation_time = end_time - start_time
-    return pi_estimate, calculation_time
-
-
-
+        pi = 4 * self.partial_sum.value
+        return pi

@@ -9,20 +9,15 @@ def log_message(message):
 
 
 def seek(command):
-    iterations = 10**11
-    step_size = 10**6
+    iterations = 10**8
     pi_estimation = 0
+    num_threads = 2
 
-    log_message(f"Starting benchmark test number: 1, algorithm: leibnitz 0.1, iterations: {iterations}, step_size: {step_size} ")
+    pi_calc = src.leibniz.LeibnizPi(iterations)
 
-    start_time = time.time()
-
-    for n in range(step_size, iterations+step_size, step_size):
-        delta_time = time.time()
-        pi_estimation += src.leibniz.leibniz(n-step_size, n)
-        delta_time = time.time() - delta_time
-
-        log_message(f"PI estimation: {pi_estimation}, total time: {time.time() - start_time}, step time: {delta_time}, termen: {n}")
+    delta = time.time()
+    pi_estimation = pi_calc.calculate_pi(num_threads)
+    print(pi_estimation, time.time() - delta)
 
 
 def main():
