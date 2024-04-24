@@ -1,5 +1,6 @@
 import piSeeker
 
+
 def print_hello_message():
     print("""
 -----------------------------------------------------------
@@ -19,20 +20,14 @@ def exit_command(arguments):
 
 
 def seek_command(arguments):
-    argument_list = {
-        'algorithm': {
-            'leibniz': piSeeker
-        }
+    algorithms = {
+        'leibniz': piSeeker,
     }
 
-    for argument in arguments:
-        print(argument)
-        if argument in argument_list['algorithm']:
-
-            arguments['algorithm'][argument]()
-            print(argument)
-        else:
-            print("")
+    if arguments and arguments[0] in algorithms:
+        algorithms[arguments[0]]()
+    else:
+        print("Invalid or no algorithm provided.")
 
 
 def help_command(arguments):
