@@ -1,4 +1,4 @@
-import piSeeker
+import piSeeker.leibniz_pi
 
 
 def print_hello_message():
@@ -21,7 +21,7 @@ def exit_command(arguments):
 
 def seek_command(arguments):
     algorithms = {
-        'leibniz': piSeeker,
+        'leibniz': piSeeker.leibniz_pi.leibniz_pi,
     }
 
     if arguments and arguments[0] in algorithms:
