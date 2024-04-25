@@ -21,7 +21,7 @@ def exit_command(arguments):
 
 def seek_command(arguments):
     algorithms = {
-        'leibniz': piSeeker.leibniz_pi.calculate_pi_series ,
+        'leibniz': piSeeker.leibniz.get_pi_from_leibniz_series,
     }
 
     if arguments and arguments[0] in algorithms:

@@ -12,7 +12,7 @@ class DataLogger:
         files = os.listdir(self.directory)
         log_files = [f for f in files if f.endswith('.csv')]
         num_log_files = len(log_files)
-        return os.path.join(self.directory, f"log_{num_log_files + 1}.csv")
+        return os.path.join(self.directory, f"test_log_{num_log_files + 1}.csv")
 
     def log_data(self, data):
         timestamp = datetime.datetime.now()
