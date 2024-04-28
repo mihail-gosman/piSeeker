@@ -1,5 +1,5 @@
 import decimal
-from src.piSeeker import datalog
+import datetime
 
 
 def calculate_termen(i):
@@ -24,21 +24,23 @@ def calculate_pi_series(iterations, precision):
 
 
 def get_pi_from_leibniz_series():
-    data_logger = datalog.DataLogger()
 
     try:
         iterations = int(input("Enter the number of iterations for pi calculation: "))
         precision = int(input("Enter the number of decimal places for precision: "))
 
         if iterations >= 0 or precision >= 0:
+            data = []
+            timestamp = datetime.datetime.now()
+            data.append(f"{timestamp} : Test started\nAlgorithm: Leibniz")
             series_terms = calculate_pi_series(iterations, precision)
-
+            data.append(f"{timestamp}: Test completed")
+            data.append(f"Terms calculated: {series_terms}")
 
         else:
             print("Please enter a positive integer.")
-            del data_logger
             get_pi_from_leibniz_series()
-
 
     except ValueError:
         print("Invalid input. Please enter a valid integer.")
+        get_pi_from_leibniz_series()

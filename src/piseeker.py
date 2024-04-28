@@ -24,36 +24,35 @@ def seek_command(arguments):
         'leibniz': piSeeker.leibniz.get_pi_from_leibniz_series,
     }
 
-    if arguments and arguments[0] in algorithms:
+    if arguments[0] and arguments[0] in algorithms:
         algorithms[arguments[0]]()
     else:
         print("Invalid or no algorithm provided.")
 
 
 def help_command(arguments):
-    pass
+    return None
 
 
-def main():
-    commands = {
-        'help': help_command,
-        'seek': seek_command,
-        'exit': exit_command
-    }
+COMMANDS = {
+    'help': help_command,
+    'seek': seek_command,
+    'exit': exit_command
+}
 
+if __name__ == "__main__":
     print_hello_message()
 
     while True:
         user_input = input("piSeeker> ").split()
 
-        command = user_input[0]
-        arguments = user_input[1:]
+        if len(user_input) >= 1:
+            command = user_input[0]
+            arguments = user_input[1:]
+        else:
+            continue
 
-        if command in commands:
-            commands[command](arguments)
+        if command in COMMANDS:
+            COMMANDS[command](arguments)
         else:
             print("Invalid command. Use 'help' for available commands.")
-
-
-if __name__ == "__main__":
-    main()
