@@ -1,4 +1,0 @@
-2024-04-25 22:43:23.581281 : Test started
-Algorithm: Leibniz
-2024-04-25 22:43:23.581281: Test completed
-Terms calculated: [Decimal('4'), Decimal('2.667'), Decimal('3.467'), Decimal('2.895')]

@@ -23,8 +23,7 @@ def calculate_pi_series(iterations, precision):
     return pi_terms
 
 
-def get_pi_from_leibniz_series():
-
+def get_pi_from_leibniz_series() -> {}:
     try:
         iterations = int(input("Enter the number of iterations for pi calculation: "))
         precision = int(input("Enter the number of decimal places for precision: "))
@@ -32,10 +31,12 @@ def get_pi_from_leibniz_series():
         if iterations >= 0 or precision >= 0:
             data = []
             timestamp = datetime.datetime.now()
-            data.append(f"{timestamp} : Test started\nAlgorithm: Leibniz")
             series_terms = calculate_pi_series(iterations, precision)
-            data.append(f"{timestamp}: Test completed")
-            data.append(f"Terms calculated: {series_terms}")
+
+            result = {
+                'series_terms': series_terms,
+                'data': data
+            }
 
         else:
             print("Please enter a positive integer.")

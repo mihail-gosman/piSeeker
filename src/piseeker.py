@@ -24,8 +24,8 @@ def seek_command(arguments):
         'leibniz': piSeeker.leibniz.get_pi_from_leibniz_series,
     }
 
-    if arguments[0] and arguments[0] in algorithms:
-        algorithms[arguments[0]]()
+    if arguments and arguments[0] in algorithms:
+        result = algorithms[arguments[0]]()
     else:
         print("Invalid or no algorithm provided.")
 
