@@ -26,6 +26,8 @@ def seek_command(arguments):
 
     if arguments and arguments[0] in algorithms:
         result = algorithms[arguments[0]]()
+        print(result['data'])
+        print(result['series_terms'])
     else:
         print("Invalid or no algorithm provided.")
 
