@@ -36,7 +36,7 @@ def get_pi_from_leibniz_series() -> {}:
             data.append(f"Start time: {datetime.datetime.now()}")
             data.append(f"Pi Calculation Method: The Gregory-Leibniz Series")
             data.append(f"Number of Iterations: {iterations}")
-            data.append(f"Decimal precision: {decimal}")
+            data.append(f"Decimal precision: {precision}")
 
             start_time = time.time()
             series_terms = calculate_pi_series(iterations, precision)
@@ -46,11 +46,8 @@ def get_pi_from_leibniz_series() -> {}:
 
             data.append(f"End time: {datetime.datetime.now()}")
             data.append(f"Execution Time: {delta_time} seconds")
-            result = {
-                'series_terms': series_terms,
-                'data': data
-            }
-            return result
+            data.extend(series_terms)
+            return data
 
         else:
             print("Please enter a positive integer.")

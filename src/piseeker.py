@@ -1,4 +1,5 @@
 import piSeeker.leibniz
+import piSeeker.datalog
 
 
 def print_hello_message():
@@ -26,8 +27,10 @@ def seek_command(arguments):
 
     if arguments and arguments[0] in algorithms:
         result = algorithms[arguments[0]]()
-        print(result['data'])
-        print(result['series_terms'])
+
+        data_log = piSeeker.datalog.DataLogger()
+        data_log.log_data(result)
+
     else:
         print("Invalid or no algorithm provided.")
 

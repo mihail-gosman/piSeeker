@@ -14,7 +14,6 @@ class DataLogger:
         return os.path.join(self.directory, f"test_log_{num_log_files + 1}.txt")
 
     def log_data(self, data_list):
-        log_filename = self.get_next_log_filename()
-        with open(log_filename, 'a') as txtfile:
+        with open(self.log_filename, 'a') as txtfile:
             for data in data_list:
                 txtfile.write(f"{data}\n")
