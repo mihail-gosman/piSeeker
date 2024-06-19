@@ -3,6 +3,12 @@ import datetime
 import time
 
 
+class Leibniz:
+    def __init__(self, arguments = None):
+        if arguments is None:
+            user_input = input("")
+
+
 def calculate_term(i):
     return (decimal.Decimal('-1') ** decimal.Decimal(str(i))) / (
                 decimal.Decimal("2") * decimal.Decimal(str(i)) + decimal.Decimal("1"))
