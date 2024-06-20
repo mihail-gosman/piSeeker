@@ -1,5 +1,10 @@
-import piSeeker.leibniz
-import piSeeker.datalog
+from piSeeker.leibniz import calculate_pi_leibniz
+from piSeeker.archimedes import calculate_pi_archimedes
+from piSeeker.monte_carlo import calculate_pi_monte_carlo
+from piSeeker.gauss_legendre import calculate_pi_gauss_legendre
+from piSeeker.bbp import calculate_pi_bbp
+from piSeeker.chudnovsky import calculate_pi_chudnovsky
+from piSeeker.nilakantha import calculate_pi_nilakantha
 
 
 def print_hello_message():
@@ -20,44 +25,13 @@ def exit_command(arguments):
         print("Resuming program.")
 
 
-def seek_command(arguments):
-    algorithms = {
-        'leibniz': piSeeker.leibniz.get_pi_from_leibniz_series,
-    }
-
-    if arguments and arguments[0] in algorithms:
-        result = algorithms[arguments[0]]()
-
-        data_log = piSeeker.datalog.DataLogger()
-        data_log.log_data(result)
-
-    else:
-        print("Invalid or no algorithm provided.")
-
-
-def help_command(arguments):
-    return None
-
-
-COMMANDS = {
-    'help': help_command,
-    'seek': seek_command,
-    'exit': exit_command
-}
-
 if __name__ == "__main__":
     print_hello_message()
-
-    while True:
-        user_input = input("piSeeker> ").split()
-
-        if len(user_input) >= 1:
-            command = user_input[0]
-            arguments = user_input[1:]
-        else:
-            continue
-
-        if command in COMMANDS:
-            COMMANDS[command](arguments)
-        else:
-            print("Invalid command. Use 'help' for available commands.")
+    i = 9
+    print(calculate_pi_bbp(i))
+    print(calculate_pi_archimedes(i))
+    print(calculate_pi_nilakantha(i))
+    print(calculate_pi_gauss_legendre(i))
+    print(calculate_pi_chudnovsky(i))
+    print(calculate_pi_monte_carlo(i))
+    print(calculate_pi_leibniz(i))
