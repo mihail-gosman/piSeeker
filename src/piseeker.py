@@ -7,6 +7,17 @@ from piSeeker.chudnovsky import calculate_pi_chudnovsky
 from piSeeker.nilakantha import calculate_pi_nilakantha
 
 
+ALGORITHMS = {
+    'leibniz': calculate_pi_leibniz,
+    'archimedes': calculate_pi_archimedes,
+    'monte_carlo': calculate_pi_monte_carlo,
+    'gauss_legendre': calculate_pi_gauss_legendre,
+    'bbp': calculate_pi_bbp,
+    'chudnovsky': calculate_pi_chudnovsky,
+    'nilakantha': calculate_pi_nilakantha,
+}
+
+
 def print_hello_message():
     print("""
 -----------------------------------------------------------
@@ -27,11 +38,4 @@ def exit_command(arguments):
 
 if __name__ == "__main__":
     print_hello_message()
-    i = 9
-    print(calculate_pi_bbp(i))
-    print(calculate_pi_archimedes(i))
-    print(calculate_pi_nilakantha(i))
-    print(calculate_pi_gauss_legendre(i))
-    print(calculate_pi_chudnovsky(i))
-    print(calculate_pi_monte_carlo(i))
-    print(calculate_pi_leibniz(i))
+    print(calculate_pi_archimedes(10000))
